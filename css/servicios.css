@@ -155,3 +155,101 @@
     }
 }
 
+/* Service icon */
+.service-icon-gradient {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.service-icon-gradient span {
+    font-size: 24px;
+}
+
+/* Feature list */
+.feature-list {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.feature-list li span.check {
+    color: #10b981;
+    margin-right: 12px;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+/* Process section */
+.process-icon {
+    width: 64px;
+    height: 64px;
+    background-color: #3b82f6;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* CTA Section */
+.cta-section {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.cta-section p {
+    color: #bfdbfe;
+}
+
+.cta-button-white {
+    background-color: white;
+    color: #3b82f6;
+}
+
+@media (max-width: 768px) {
+    .service-icon-gradient {
+        width: 56px;
+        height: 56px;
+    }
+    
+    .service-icon-gradient span {
+        font-size: 20px;
+    }
+    
+    .process-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-icon-gradient {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .service-icon-gradient span {
+        font-size: 18px;
+    }
+    
+    .process-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 14px;
+    }
+}
+

@@ -118,3 +118,87 @@
     }
 }
 
+/* Estilos para iconos de servicios */
+.service-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+}
+
+.service-icon span {
+    font-size: 24px;
+}
+
+.service-icon.blue {
+    background-color: #dbeafe;
+}
+
+.service-icon.purple {
+    background-color: #f3e8ff;
+}
+
+.service-icon.green {
+    background-color: #dcfce7;
+}
+
+.service-icon.orange {
+    background-color: #fed7aa;
+}
+
+/* Hero buttons */
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* CTA Section */
+.cta-section {
+    background-color: #111827;
+    color: white;
+}
+
+.cta-section p {
+    color: #d1d5db;
+}
+
+@media (max-width: 768px) {
+    .service-icon {
+        width: 56px;
+        height: 56px;
+    }
+    
+    .service-icon span {
+        font-size: 20px;
+    }
+    
+    .hero-buttons {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-icon {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .service-icon span {
+        font-size: 18px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+    }
+}
+

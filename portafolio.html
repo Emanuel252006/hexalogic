@@ -49,12 +49,12 @@
         <!-- Filter Tabs -->
         <section class="section-sm" style="background-color: white; border-bottom: 1px solid #e5e7eb;">
             <div class="container">
-                <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-                    <button style="padding: 8px 24px; background-color: #3b82f6; color: white; border: none; border-radius: 25px; font-weight: 600;">Todos</button>
-                    <button style="padding: 8px 24px; background-color: #f3f4f6; color: #6b7280; border: none; border-radius: 25px; font-weight: 600;">E-commerce</button>
-                    <button style="padding: 8px 24px; background-color: #f3f4f6; color: #6b7280; border: none; border-radius: 25px; font-weight: 600;">Dashboard</button>
-                    <button style="padding: 8px 24px; background-color: #f3f4f6; color: #6b7280; border: none; border-radius: 25px; font-weight: 600;">Mobile App</button>
-                    <button style="padding: 8px 24px; background-color: #f3f4f6; color: #6b7280; border: none; border-radius: 25px; font-weight: 600;">Website</button>
+                <div class="filter-buttons-container">
+                    <button class="filter-button active">Todos</button>
+                    <button class="filter-button">E-commerce</button>
+                    <button class="filter-button">Dashboard</button>
+                    <button class="filter-button">Mobile App</button>
+                    <button class="filter-button">Website</button>
                 </div>
             </div>
         </section>
@@ -64,114 +64,114 @@
             <div class="container">
                 <div class="grid grid-3">
                     <div class="card">
-                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; position: relative;">
-                            <span style="font-size: 48px; color: white; opacity: 0.7;">👁️</span>
-                            <div style="position: absolute; top: 16px; left: 16px; background-color: white; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600;">E-commerce</div>
+                        <div class="project-image-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <span>👁️</span>
+                            <div class="project-category-badge">E-commerce</div>
                         </div>
                         <h3 class="text-xl font-semibold mb-3">E-commerce Moderno</h3>
                         <p class="mb-6" style="color: #6b7280;">Plataforma de comercio electrónico completa con carrito de compras, pagos integrados y panel administrativo.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">React</span>
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Node.js</span>
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">MongoDB</span>
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Stripe</span>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Stripe</span>
                         </div>
-                        <div style="display: flex; gap: 12px;">
-                            <a href="#" class="btn" style="flex: 1; text-align: center;">Ver Proyecto</a>
-                            <a href="#" style="padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; color: #6b7280; text-decoration: none;">📁</a>
+                        <div class="project-actions">
+                            <a href="#" class="btn">Ver Proyecto</a>
+                            <a href="#" class="btn-icon">📁</a>
                         </div>
                     </div>
 
                     <div class="card">
-                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; position: relative;">
-                            <span style="font-size: 48px; color: white; opacity: 0.7;">👁️</span>
-                            <div style="position: absolute; top: 16px; left: 16px; background-color: white; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600;">Dashboard</div>
+                        <div class="project-image-placeholder" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <span>👁️</span>
+                            <div class="project-category-badge">Dashboard</div>
                         </div>
                         <h3 class="text-xl font-semibold mb-3">Dashboard Empresarial</h3>
                         <p class="mb-6" style="color: #6b7280;">Panel de control intuitivo para gestión de datos empresariales con gráficos interactivos y reportes en tiempo real.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Vue.js</span>
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Python</span>
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">PostgreSQL</span>
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Chart.js</span>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Chart.js</span>
                         </div>
-                        <div style="display: flex; gap: 12px;">
-                            <a href="#" class="btn" style="flex: 1; text-align: center;">Ver Proyecto</a>
-                            <a href="#" style="padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; color: #6b7280; text-decoration: none;">📁</a>
+                        <div class="project-actions">
+                            <a href="#" class="btn">Ver Proyecto</a>
+                            <a href="#" class="btn-icon">📁</a>
                         </div>
                     </div>
 
                     <div class="card">
-                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; position: relative;">
-                            <span style="font-size: 48px; color: white; opacity: 0.7;">👁️</span>
-                            <div style="position: absolute; top: 16px; left: 16px; background-color: white; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600;">Mobile App</div>
+                        <div class="project-image-placeholder" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <span>👁️</span>
+                            <div class="project-category-badge">Mobile App</div>
                         </div>
                         <h3 class="text-xl font-semibold mb-3">App Móvil Fitness</h3>
                         <p class="mb-6" style="color: #6b7280;">App móvil para seguimiento de ejercicios con rutinas personalizadas, estadísticas y comunidad.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">React Native</span>
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Firebase</span>
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Redux</span>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Redux</span>
                         </div>
-                        <div style="display: flex; gap: 12px;">
-                            <a href="#" class="btn" style="flex: 1; text-align: center;">Ver Proyecto</a>
-                            <a href="#" style="padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; color: #6b7280; text-decoration: none;">📁</a>
+                        <div class="project-actions">
+                            <a href="#" class="btn">Ver Proyecto</a>
+                            <a href="#" class="btn-icon">📁</a>
                         </div>
                     </div>
 
                     <div class="card">
-                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; position: relative;">
-                            <span style="font-size: 48px; color: white; opacity: 0.7;">👁️</span>
-                            <div style="position: absolute; top: 16px; left: 16px; background-color: white; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600;">Website</div>
+                        <div class="project-image-placeholder" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                            <span>👁️</span>
+                            <div class="project-category-badge">Website</div>
                         </div>
                         <h3 class="text-xl font-semibold mb-3">Sitio Web Corporativo</h3>
                         <p class="mb-6" style="color: #6b7280;">Sitio web corporativo moderno y responsivo con CMS personalizado y optimización SEO.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Next.js</span>
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Tailwind CSS</span>
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Contentful</span>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Contentful</span>
                         </div>
-                        <div style="display: flex; gap: 12px;">
-                            <a href="#" class="btn" style="flex: 1; text-align: center;">Ver Proyecto</a>
-                            <a href="#" style="padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; color: #6b7280; text-decoration: none;">📁</a>
+                        <div class="project-actions">
+                            <a href="#" class="btn">Ver Proyecto</a>
+                            <a href="#" class="btn-icon">📁</a>
                         </div>
                     </div>
 
                     <div class="card">
-                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; position: relative;">
-                            <span style="font-size: 48px; color: white; opacity: 0.7;">👁️</span>
-                            <div style="position: absolute; top: 16px; left: 16px; background-color: white; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600;">Education</div>
+                        <div class="project-image-placeholder" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <span>👁️</span>
+                            <div class="project-category-badge">Education</div>
                         </div>
                         <h3 class="text-xl font-semibold mb-3">Plataforma de Aprendizaje</h3>
                         <p class="mb-6" style="color: #6b7280;">Sistema de gestión de aprendizaje online con videoconferencias, tareas y calificaciones.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Angular</span>
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Express</span>
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Socket.io</span>
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">AWS</span>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Angular</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">Socket.io</span>
+                            <span class="tech-tag">AWS</span>
                         </div>
-                        <div style="display: flex; gap: 12px;">
-                            <a href="#" class="btn" style="flex: 1; text-align: center;">Ver Proyecto</a>
-                            <a href="#" style="padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; color: #6b7280; text-decoration: none;">📁</a>
+                        <div class="project-actions">
+                            <a href="#" class="btn">Ver Proyecto</a>
+                            <a href="#" class="btn-icon">📁</a>
                         </div>
                     </div>
 
                     <div class="card">
-                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; position: relative;">
-                            <span style="font-size: 48px; color: white; opacity: 0.7;">👁️</span>
-                            <div style="position: absolute; top: 16px; left: 16px; background-color: white; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600;">Delivery</div>
+                        <div class="project-image-placeholder" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                            <span>👁️</span>
+                            <div class="project-category-badge">Delivery</div>
                         </div>
                         <h3 class="text-xl font-semibold mb-3">App de Delivery</h3>
                         <p class="mb-6" style="color: #6b7280;">Aplicación completa de delivery con geolocalización, pagos en tiempo real y tracking de pedidos.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Flutter</span>
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Node.js</span>
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">MongoDB</span>
-                            <span style="background-color: #f3f4f6; color: #6b7280; padding: 4px 12px; border-radius: 20px; font-size: 14px;">Google Maps</span>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Google Maps</span>
                         </div>
-                        <div style="display: flex; gap: 12px;">
-                            <a href="#" class="btn" style="flex: 1; text-align: center;">Ver Proyecto</a>
-                            <a href="#" style="padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; color: #6b7280; text-decoration: none;">📁</a>
+                        <div class="project-actions">
+                            <a href="#" class="btn">Ver Proyecto</a>
+                            <a href="#" class="btn-icon">📁</a>
                         </div>
                     </div>
                 </div>
@@ -187,31 +187,31 @@
                 </div>
 
                 <div class="grid grid-4">
-                    <div class="text-center">
-                        <div style="font-size: 36px; font-weight: bold; color: #3b82f6; margin-bottom: 8px;">50+</div>
-                        <div style="color: #6b7280;">Proyectos Completados</div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Proyectos Completados</div>
                     </div>
-                    <div class="text-center">
-                        <div style="font-size: 36px; font-weight: bold; color: #3b82f6; margin-bottom: 8px;">30+</div>
-                        <div style="color: #6b7280;">Clientes Satisfechos</div>
+                    <div class="stat-item">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Clientes Satisfechos</div>
                     </div>
-                    <div class="text-center">
-                        <div style="font-size: 36px; font-weight: bold; color: #3b82f6; margin-bottom: 8px;">5+</div>
-                        <div style="color: #6b7280;">Años de Experiencia</div>
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Años de Experiencia</div>
                     </div>
-                    <div class="text-center">
-                        <div style="font-size: 36px; font-weight: bold; color: #3b82f6; margin-bottom: 8px;">24/7</div>
-                        <div style="color: #6b7280;">Soporte Técnico</div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Soporte Técnico</div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA Section -->
-        <section class="section" style="background-color: #111827; color: white;">
+        <section class="section cta-section">
             <div class="container text-center">
                 <h2 class="text-3xl font-bold mb-4">¿Listo para tu próximo proyecto?</h2>
-                <p class="text-xl mb-8" style="color: #d1d5db;">Únete a nuestros clientes satisfechos y haz realidad tu visión digital</p>
+                <p class="text-xl mb-8">Únete a nuestros clientes satisfechos y haz realidad tu visión digital</p>
                 <a href="contacto.html" class="btn">Iniciar Proyecto</a>
             </div>
         </section>
