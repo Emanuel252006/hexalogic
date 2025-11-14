@@ -30,6 +30,76 @@
     padding: 80px 0;
 }
 
+/* Estilos para el layout inline de contacto */
+.contact-page-container {
+    padding: 80px 0;
+}
+
+.contact-page-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+}
+
+.contact-info-section {
+    margin-bottom: 48px;
+}
+
+.contact-info-item-inline {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.contact-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+/* Estilos para inputs inline */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    min-height: 44px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+button[type="submit"] {
+    min-height: 44px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
 /* Contact Info */
 .contact-info-list {
     margin-bottom: 48px;
@@ -137,6 +207,11 @@
     border-radius: 8px;
     font-size: 16px;
     transition: border-color 0.3s ease;
+    min-height: 44px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .form-input:focus,
@@ -173,14 +248,30 @@
     background-color: #2563eb;
 }
 
+@media (max-width: 1024px) {
+    .contact-layout {
+        gap: 40px;
+    }
+    
+    .contact-page-grid {
+        gap: 40px;
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
+    .hero {
+        padding: 60px 0;
+    }
+    
     .hero h1 {
-        font-size: 36px;
+        font-size: 32px;
+        margin-bottom: 16px;
     }
     
     .hero p {
-        font-size: 18px;
+        font-size: 16px;
+        margin-bottom: 24px;
     }
     
     .contact-layout {
@@ -189,9 +280,156 @@
         padding: 40px 0;
     }
     
+    .contact-page-container {
+        padding: 40px 0;
+    }
+    
+    .contact-page-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
     .form-row {
         grid-template-columns: 1fr;
         gap: 16px;
+    }
+    
+    .contact-form-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .contact-info-item {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .contact-info-item-inline {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .contact-info-content {
+        text-align: center;
+    }
+    
+    .why-choose-us {
+        padding: 24px;
+    }
+    
+    .form-input,
+    .form-select,
+    .form-textarea {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 40px 0;
+    }
+    
+    .hero h1 {
+        font-size: 28px;
+    }
+    
+    .hero p {
+        font-size: 15px;
+    }
+    
+    .contact-page-container {
+        padding: 30px 0;
+    }
+    
+    .contact-page-grid {
+        gap: 24px;
+    }
+    
+    .contact-layout {
+        padding: 30px 0;
+        gap: 24px;
+    }
+    
+    .contact-info-section {
+        margin-bottom: 32px;
+    }
+    
+    .contact-info-list {
+        margin-bottom: 32px;
+    }
+    
+    .contact-info-item {
+        margin-bottom: 20px;
+    }
+    
+    .contact-info-item-inline {
+        margin-bottom: 20px;
+    }
+    
+    .contact-info-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .contact-info-content h3 {
+        font-size: 16px;
+    }
+    
+    .contact-info-content .contact-detail {
+        font-size: 14px;
+    }
+    
+    .contact-info-content .contact-description {
+        font-size: 13px;
+    }
+    
+    .why-choose-us {
+        padding: 20px;
+    }
+    
+    .why-choose-us h3 {
+        font-size: 18px;
+    }
+    
+    .why-choose-us li {
+        font-size: 14px;
+    }
+    
+    .form-group {
+        gap: 8px;
+    }
+    
+    .form-label {
+        font-size: 14px;
+    }
+    
+    .form-input,
+    .form-select,
+    .form-textarea {
+        padding: 10px 14px;
+        font-size: 15px;
+    }
+    
+    .form-textarea {
+        min-height: 100px;
+    }
+    
+    .form-submit {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+}
+
+/* Mejoras para pantallas medianas */
+@media (min-width: 481px) and (max-width: 768px) {
+    .hero h1 {
+        font-size: 30px;
+    }
+    
+    .contact-page-grid {
+        grid-template-columns: 1fr;
     }
 }
 

@@ -39,6 +39,9 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    min-height: 44px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .filter-tab.active {
@@ -53,6 +56,20 @@
 
 .filter-tab:not(.active):hover {
     background-color: #e5e7eb;
+}
+
+/* Estilos para botones de filtro inline */
+button.filter-button {
+    padding: 8px 24px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 44px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    font-size: 14px;
 }
 
 /* Grid */
@@ -164,23 +181,117 @@
     color: #6b7280;
 }
 
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+@media (max-width: 1024px) {
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
+    .hero {
+        padding: 60px 0;
+    }
+    
     .hero h1 {
-        font-size: 36px;
+        font-size: 32px;
+        margin-bottom: 16px;
     }
     
     .hero p {
-        font-size: 18px;
+        font-size: 16px;
+        margin-bottom: 24px;
     }
     
     .filter-tabs {
         gap: 8px;
+        padding: 30px 0;
     }
     
     .filter-tab {
         padding: 6px 16px;
         font-size: 14px;
+    }
+    
+    .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    
+    .project-image {
+        height: 180px;
+    }
+    
+    .project-content {
+        padding: 0 20px 20px;
+    }
+    
+    .stat-number {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 40px 0;
+    }
+    
+    .hero h1 {
+        font-size: 28px;
+    }
+    
+    .hero p {
+        font-size: 15px;
+    }
+    
+    .filter-tabs {
+        gap: 6px;
+        padding: 20px 0;
+    }
+    
+    .filter-tab {
+        padding: 5px 12px;
+        font-size: 12px;
+    }
+    
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-image {
+        height: 160px;
+    }
+    
+    .project-actions {
+        flex-direction: column;
+    }
+    
+    .stat-number {
+        font-size: 24px;
+    }
+    
+    .stat-label {
+        font-size: 14px;
+    }
+}
+
+/* Mejoras para pantallas medianas */
+@media (min-width: 481px) and (max-width: 768px) {
+    .hero h1 {
+        font-size: 30px;
+    }
+    
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 

@@ -65,14 +65,93 @@
     margin-right: 12px;
 }
 
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (max-width: 1024px) {
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
+    .hero {
+        padding: 60px 0;
+    }
+    
     .hero h1 {
-        font-size: 36px;
+        font-size: 32px;
+        margin-bottom: 16px;
     }
     
     .hero p {
+        font-size: 16px;
+        margin-bottom: 24px;
+    }
+    
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    
+    .card {
+        padding: 24px;
+    }
+    
+    .card h3 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 40px 0;
+    }
+    
+    .hero h1 {
+        font-size: 28px;
+    }
+    
+    .hero p {
+        font-size: 15px;
+    }
+    
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .card h3 {
         font-size: 18px;
+    }
+    
+    .card p {
+        font-size: 14px;
+    }
+    
+    .card ul li {
+        font-size: 14px;
+    }
+}
+
+/* Mejoras para pantallas medianas */
+@media (min-width: 481px) and (max-width: 768px) {
+    .hero h1 {
+        font-size: 30px;
+    }
+    
+    .grid-2 {
+        grid-template-columns: 1fr;
     }
 }
 
