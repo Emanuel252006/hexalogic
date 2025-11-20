@@ -51,16 +51,31 @@ body {
     justify-content: center;
     position: absolute;
     left: 0;
-    animation: rollLeft 2s ease-out forwards;
     transform-origin: center;
     z-index: 10;
     flex-shrink: 0;
 }
 
+body:not(.animation-played) .logo-icon-container {
+    animation: rollLeft 2s ease-out forwards;
+}
+
+body.animation-played .logo-icon-container {
+    transform: translateX(210px) rotate(-720deg);
+    opacity: 1;
+}
+
 .logo-icon {
     width: 50px;
     height: 50px;
+}
+
+body:not(.animation-played) .logo-icon {
     animation: rotate 2s ease-out forwards;
+}
+
+body.animation-played .logo-icon {
+    transform: rotate(-720deg);
 }
 
 .logo-text-wrapper {
@@ -97,9 +112,16 @@ body {
     height: 100%;
     background-color: white;
     z-index: 2;
-    animation: revealText 2s ease-out forwards;
     pointer-events: none;
     transform-origin: right;
+}
+
+body:not(.animation-played) .logo-text-wrapper::before {
+    animation: revealText 2s ease-out forwards;
+}
+
+body.animation-played .logo-text-wrapper::before {
+    transform: scaleX(0);
 }
 
 @keyframes rollLeft {
@@ -261,18 +283,52 @@ body {
 }
 
 .email-form button {
-    padding: 12px 16px;
-    background-color: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
+    --color: #3b82f6;
+    font-family: inherit;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    line-height: 1.5;
+    margin: 0;
+    position: relative;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color 0.5s;
+    z-index: 1;
+    font-size: 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    color: var(--color);
+    background-color: transparent;
+    padding: 12px 16px;
+}
+
+.email-form button::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 250px;
+    border-radius: 50%;
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
 }
 
 .email-form button:hover {
-    background-color: #2563eb;
+    color: #fff;
+}
+
+.email-form button:hover::before {
+    top: -30px;
+    left: -30px;
+}
+
+.email-form button:active::before {
+    background: #2563eb;
+    transition: background 0s;
 }
 
 .copyright {
@@ -323,33 +379,65 @@ body {
 
 /* Botones */
 .btn {
+    --color: #3b82f6;
+    font-family: inherit;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 12px 24px;
-    background-color: #3b82f6;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
+    width: auto;
     min-height: 44px;
+    line-height: 1.5;
+    margin: 0;
+    position: relative;
     cursor: pointer;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color 0.5s;
+    z-index: 1;
+    font-size: 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    color: var(--color);
+    background-color: transparent;
+    text-decoration: none;
     -webkit-tap-highlight-color: transparent;
 }
 
+.btn::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 250px;
+    border-radius: 50%;
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+}
+
 .btn:hover {
-    background-color: #2563eb;
+    color: #fff;
+}
+
+.btn:hover::before {
+    top: -30px;
+    left: -30px;
+}
+
+.btn:active::before {
+    background: #2563eb;
+    transition: background 0s;
 }
 
 .btn-outline {
     background-color: transparent;
-    border: 2px solid #3b82f6;
-    color: #3b82f6;
+    border: 2px solid var(--color);
+    color: var(--color);
 }
 
 .btn-outline:hover {
-    background-color: #3b82f6;
     color: white;
 }
 
@@ -395,6 +483,14 @@ body {
     font-weight: 600;
 }
 
+.mb-2 {
+    margin-bottom: 8px;
+}
+
+.mb-3 {
+    margin-bottom: 12px;
+}
+
 .mb-4 {
     margin-bottom: 16px;
 }
@@ -425,6 +521,11 @@ body {
     .logo-icon {
         width: 45px;
         height: 45px;
+    }
+    
+    body.animation-played .logo-icon-container {
+        transform: translateX(180px) rotate(-720deg);
+        opacity: 1;
     }
     
     @keyframes rollLeft {
@@ -467,6 +568,11 @@ body {
     
     .logo-text-wrapper {
         height: 30px;
+    }
+    
+    body.animation-played .logo-icon-container {
+        transform: translateX(150px) rotate(-720deg);
+        opacity: 1;
     }
     
     @keyframes rollLeft {
@@ -576,6 +682,11 @@ body {
     
     .logo-text-wrapper {
         height: 28px;
+    }
+    
+    body.animation-played .logo-icon-container {
+        transform: translateX(120px) rotate(-720deg);
+        opacity: 1;
     }
     
     @keyframes rollLeft {

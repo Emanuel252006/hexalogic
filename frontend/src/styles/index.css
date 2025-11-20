@@ -167,6 +167,29 @@
     color: #d1d5db;
 }
 
+.cta-section .btn {
+    --color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.cta-section .btn::before {
+    background: white;
+}
+
+.cta-section .btn:hover {
+    color: #111827;
+}
+
+.cta-section .btn:hover::before {
+    background: white;
+}
+
+.cta-section .btn:active::before {
+    background: #e5e7eb;
+}
+
 @media (max-width: 768px) {
     .service-icon {
         width: 56px;

@@ -1,0 +1,31 @@
+{
+  "name": "hexalogic-backend",
+  "version": "1.0.0",
+  "description": "Backend para HexaLogic - Servidor de formulario de contacto",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "contact",
+    "form",
+    "email",
+    "brevo"
+  ],
+  "author": "HexaLogic",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
+
+

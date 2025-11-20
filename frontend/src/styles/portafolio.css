@@ -60,16 +60,54 @@
 
 /* Estilos para botones de filtro inline */
 button.filter-button {
+    --color: #3b82f6;
+    font-family: inherit;
+    display: inline-block;
     padding: 8px 24px;
-    border: none;
+    width: auto;
+    min-height: 44px;
+    line-height: 2.5em;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color 0.5s;
+    z-index: 1;
+    font-size: 14px;
     border-radius: 25px;
     font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-height: 44px;
+    color: var(--color);
+    background-color: transparent;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
-    font-size: 14px;
+}
+
+button.filter-button::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 400px;
+    width: 300px;
+    border-radius: 50%;
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+}
+
+button.filter-button:hover {
+    color: #fff;
+}
+
+button.filter-button:hover::before {
+    top: -30px;
+    left: -30px;
+}
+
+button.filter-button:active::before {
+    background: #2563eb;
+    transition: background 0s;
 }
 
 /* Grid */
@@ -149,6 +187,21 @@ button.filter-button {
 .project-actions .btn {
     flex: 1;
     text-align: center;
+}
+
+.project-actions .btn::before {
+    height: 600px;
+    width: 600px;
+    transition: all 1.5s ease;
+}
+
+.project-actions .btn {
+    transition: color 0.8s ease;
+}
+
+.project-actions .btn:hover::before {
+    top: -250px;
+    left: -250px;
 }
 
 .project-actions .btn-icon {
@@ -304,27 +357,70 @@ button.filter-button {
 }
 
 .filter-button {
+    --color: #3b82f6;
+    font-family: inherit;
+    display: inline-block;
     padding: 8px 24px;
-    background-color: #f3f4f6;
-    color: #6b7280;
-    border: none;
+    width: auto;
+    min-height: 44px;
+    line-height: 2.5em;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color 0.5s;
+    z-index: 1;
+    font-size: 14px;
     border-radius: 25px;
     font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-height: 44px;
+    color: var(--color);
+    background-color: transparent;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
-    font-size: 14px;
+}
+
+.filter-button::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 300px;
+    width: 250px;
+    border-radius: 50%;
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+}
+
+.filter-button:hover {
+    color: #fff;
+}
+
+.filter-button:hover::before {
+    top: -60px;
+    left: -60px;
+}
+
+.filter-button:active::before {
+    background: #2563eb;
+    transition: background 0s;
 }
 
 .filter-button.active {
     background-color: #3b82f6;
     color: white;
+    border-color: #3b82f6;
 }
 
-.filter-button:not(.active):hover {
-    background-color: #e5e7eb;
+.filter-button.active::before {
+    background: #3b82f6;
+    top: -30px;
+    left: -30px;
+}
+
+.filter-button:not(.active) {
+    background-color: transparent;
 }
 
 /* Project image placeholder */
@@ -384,6 +480,21 @@ button.filter-button {
     text-align: center;
 }
 
+.project-actions .btn::before {
+    height: 600px;
+    width: 600px;
+    transition: all 1.5s ease;
+}
+
+.project-actions .btn {
+    transition: color 0.8s ease;
+}
+
+.project-actions .btn:hover::before {
+    top: -250px;
+    left: -250px;
+}
+
 .project-actions .btn-icon {
     padding: 12px;
     border: 1px solid #d1d5db;
@@ -423,6 +534,29 @@ button.filter-button {
 
 .cta-section p {
     color: #d1d5db;
+}
+
+.cta-section .btn {
+    --color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.cta-section .btn::before {
+    background: white;
+}
+
+.cta-section .btn:hover {
+    color: #111827;
+}
+
+.cta-section .btn:hover::before {
+    background: white;
+}
+
+.cta-section .btn:active::before {
+    background: #e5e7eb;
 }
 
 @media (max-width: 768px) {

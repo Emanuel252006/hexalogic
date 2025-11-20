@@ -215,8 +215,26 @@
 }
 
 .cta-button-white {
-    background-color: white;
+    --color: white;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.cta-button-white:hover {
     color: #3b82f6;
+}
+
+.cta-button-white::before {
+    background: white;
+}
+
+.cta-button-white:hover::before {
+    background: white;
+}
+
+.cta-button-white:active::before {
+    background: #e5e7eb;
 }
 
 @media (max-width: 768px) {
