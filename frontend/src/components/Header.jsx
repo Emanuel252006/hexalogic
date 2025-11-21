@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 const Header = () => {
   const location = useLocation();
-  const [animationPlayed, setAnimationPlayed] = useState(false);
+  const [AnimationPlayed, setAnimationPlayed] = useState(false);
 
   useEffect(() => {
     // Verificar si ya se ejecutó la animación en esta sesión

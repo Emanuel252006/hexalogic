@@ -1,12 +1,21 @@
 import { Link } from 'react-router-dom';
 import { Monitor, Laptop, Smartphone, Wrench } from 'lucide-react';
 import '../styles/index.css';
+import imagenHexalogic from '../img/IMAGEN_HEXALOGIC1.jpg';
 
 const Home = () => {
   return (
-    <>
+    <div className="home-page">
       {/* Hero Section */}
-      <section className="hero">
+      <section 
+        className="hero"
+        style={{
+          backgroundImage: `url(${imagenHexalogic})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         <div className="container">
           <h1>Soluciones Tecnológicas Profesionales</h1>
           <p>Desarrollo web, aplicaciones móviles, sistemas de escritorio y soporte técnico. Tecnología de calidad para hacer crecer tu negocio.</p>
@@ -69,7 +78,7 @@ const Home = () => {
           <Link to="/contacto" className="btn">Empezar Proyecto</Link>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

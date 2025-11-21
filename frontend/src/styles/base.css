@@ -379,7 +379,7 @@ body.animation-played .logo-text-wrapper::before {
 
 /* Botones */
 .btn {
-    --color: #3b82f6;
+    --color: #000000;
     font-family: inherit;
     display: inline-flex;
     align-items: center;
