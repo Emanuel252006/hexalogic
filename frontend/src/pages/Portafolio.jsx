@@ -1,66 +1,58 @@
 import { Link } from 'react-router-dom';
-import { Eye, Folder } from 'lucide-react';
+import { Eye } from 'lucide-react';
 import '../styles/portafolio.css';
+import imagenPortafolio from '../img/imgportafolio.jpg';
+import imagenSoftwareNavarro from '../img/Screenshot 2025-11-25 182547.png';
+import imagenSabor from '../img/imgsabor.jpeg';
+import imagenProyecto from '../img/logoproyecto-removebg-preview.png';
 
 const Portafolio = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-commerce Moderno',
-      description: 'Plataforma de comercio electrónico completa con carrito de compras, pagos integrados y panel administrativo.',
-      category: 'E-commerce',
+      title: 'AsisControl',
+      description: 'Sistema de asistencias y control de personal',
+      category: 'Proyecto Formativo',
       gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe']
+      technologies: ['React', 'Node.js', 'MySQL'],
+      image: imagenSoftwareNavarro,
+      link: 'https://softwarenavarro.com/'
     },
     {
       id: 2,
-      title: 'Dashboard Empresarial',
+      title: 'Sabor',
       description: 'Panel de control intuitivo para gestión de datos empresariales con gráficos interactivos y reportes en tiempo real.',
-      category: 'Dashboard',
+      category: 'Proyecto Formativo',
       gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-      technologies: ['Vue.js', 'Python', 'PostgreSQL', 'Chart.js']
+      technologies: ['React', 'Node.js', 'MySQL'],
+      image: imagenSabor
     },
     {
       id: 3,
-      title: 'App Móvil Fitness',
+      title: 'Scedesigns',
       description: 'App móvil para seguimiento de ejercicios con rutinas personalizadas, estadísticas y comunidad.',
-      category: 'Mobile App',
+      category: 'Proyecto Formativo',
       gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-      technologies: ['React Native', 'Firebase', 'Redux']
-    },
-    {
-      id: 4,
-      title: 'Sitio Web Corporativo',
-      description: 'Sitio web corporativo moderno y responsivo con CMS personalizado y optimización SEO.',
-      category: 'Website',
-      gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-      technologies: ['Next.js', 'Tailwind CSS', 'Contentful']
-    },
-    {
-      id: 5,
-      title: 'Plataforma de Aprendizaje',
-      description: 'Sistema de gestión de aprendizaje online con videoconferencias, tareas y calificaciones.',
-      category: 'Education',
-      gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-      technologies: ['Angular', 'Express', 'Socket.io', 'AWS']
-    },
-    {
-      id: 6,
-      title: 'App de Delivery',
-      description: 'Aplicación completa de delivery con geolocalización, pagos en tiempo real y tracking de pedidos.',
-      category: 'Delivery',
-      gradient: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
-      technologies: ['Flutter', 'Node.js', 'MongoDB', 'Google Maps']
+      technologies: ['React', 'Node.js', 'MySQL'],
+      image: imagenProyecto
     }
   ];
 
   return (
     <>
       {/* Hero Section */}
-      <section className="hero">
+      <section 
+        className="hero"
+        style={{
+          backgroundImage: `url(${imagenPortafolio})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         <div className="container">
-          <h1>Nuestro Portafolio</h1>
-          <p>Descubre algunos de nuestros proyectos más destacados. Cada uno representa nuestro compromiso con la calidad y la innovación.</p>
+          <h1 style={{ color: '#ffffff', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)' }}>Nuestro Portafolio</h1>
+          <p style={{ color: '#ffffff', textShadow: '1px 1px 3px rgba(0, 0, 0, 0.8)' }}>Descubre algunos de nuestros proyectos más destacados. Cada uno representa nuestro compromiso con la calidad y la innovación.</p>
         </div>
       </section>
 
@@ -70,25 +62,38 @@ const Portafolio = () => {
           <div className="grid grid-3">
             {projects.map((project) => (
               <div key={project.id} className="card">
-                <div 
+                <a 
+                  href={project.link || "#"} 
+                  target={project.link ? "_blank" : "_self"} 
+                  rel={project.link ? "noopener noreferrer" : ""}
                   className="project-image-placeholder" 
-                  style={{ background: project.gradient }}
+                  style={project.image 
+                    ? { 
+                        backgroundImage: `url(${project.image})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                        cursor: 'pointer',
+                        textDecoration: 'none',
+                        display: 'block'
+                      }
+                    : { 
+                        background: project.gradient,
+                        cursor: 'pointer',
+                        textDecoration: 'none',
+                        display: 'block'
+                      }
+                  }
                 >
-                  <Eye size={48} color="white" />
+                  {!project.image && <Eye size={48} color="white" />}
                   <div className="project-category-badge">{project.category}</div>
-                </div>
+                </a>
                 <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
                 <p className="mb-6" style={{ color: '#6b7280' }}>{project.description}</p>
                 <div className="tech-tags">
                   {project.technologies.map((tech, index) => (
                     <span key={index} className="tech-tag">{tech}</span>
                   ))}
-                </div>
-                <div className="project-actions">
-                  <a href="#" className="btn">Ver Proyecto</a>
-                  <a href="#" className="btn-icon">
-                    <Folder size={20} />
-                  </a>
                 </div>
               </div>
             ))}

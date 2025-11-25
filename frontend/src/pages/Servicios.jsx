@@ -1,15 +1,24 @@
 import { Link } from 'react-router-dom';
 import { Monitor, Laptop, Smartphone, Shield, Wrench } from 'lucide-react';
 import '../styles/servicios.css';
+import imagenServicios from '../img/imgservicios.jpg';
 
 const Servicios = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="hero">
+      <section 
+        className="hero"
+        style={{
+          backgroundImage: `url(${imagenServicios})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         <div className="container">
-          <h1>Nuestros Servicios</h1>
-          <p>Ofrecemos soluciones tecnológicas completas: desarrollo web, aplicaciones móviles, sistemas de escritorio, asesoramiento y soporte técnico.</p>
+          <h1 style={{ color: '#ffffff', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)' }}>Nuestros Servicios</h1>
+          <p style={{ color: '#ffffff', textShadow: '1px 1px 3px rgba(0, 0, 0, 0.8)' }}>Ofrecemos soluciones tecnológicas completas: desarrollo web, aplicaciones móviles, sistemas de escritorio, asesoramiento y soporte técnico.</p>
         </div>
       </section>
 

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Phone, Mail, Clock } from 'lucide-react';
 import { sendContactEmail } from '../services/api';
 import '../styles/contacto.css';
+import imagenContacto from '../img/imgcontactanos.jpg';
 
 const Contacto = () => {
   const [formData, setFormData] = useState({
@@ -84,10 +85,18 @@ const Contacto = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="hero">
+      <section 
+        className="hero"
+        style={{
+          backgroundImage: `url(${imagenContacto})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         <div className="container">
-          <h1>Contactanos</h1>
-          <p>¿Tienes un proyecto en mente? Estamos aquí para ayudarte. Contáctanos y comencemos a hacer realidad tu idea digital.</p>
+          <h1 style={{ color: '#ffffff', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)' }}>Contactanos</h1>
+          <p style={{ color: '#ffffff', textShadow: '1px 1px 3px rgba(0, 0, 0, 0.8)' }}>¿Tienes un proyecto en mente? Estamos aquí para ayudarte. Contáctanos y comencemos a hacer realidad tu idea digital.</p>
         </div>
       </section>
 

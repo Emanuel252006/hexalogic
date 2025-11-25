@@ -10,13 +10,15 @@
 .hero h1 {
     font-size: 48px;
     font-weight: 700;
-    color: #111827;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     margin-bottom: 24px;
 }
 
 .hero p {
     font-size: 20px;
-    color: #6b7280;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     max-width: 600px;
     margin: 0 auto 32px;
 }
@@ -234,7 +236,7 @@
 }
 
 .cta-button-white:active::before {
-    background: #e5e7eb;
+    background: #000000;
 }
 
 @media (max-width: 768px) {

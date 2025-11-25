@@ -98,7 +98,7 @@
 }
 
 .home-page .btn:active::before {
-    background: #2563eb;
+    background: #000000;
     transition: background 0s;
 }
 
@@ -198,7 +198,7 @@
 }
 
 .home-page .cta-section .btn:active::before {
-    background: #e5e7eb;
+    background: #000000;
 }
 
 /* ============================================

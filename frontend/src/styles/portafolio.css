@@ -106,7 +106,7 @@ button.filter-button:hover::before {
 }
 
 button.filter-button:active::before {
-    background: #2563eb;
+    background: #000000;
     transition: background 0s;
 }
 
@@ -131,6 +131,11 @@ button.filter-button:active::before {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     overflow: hidden;
     transition: box-shadow 0.3s ease;
+}
+
+/* Cards del portafolio - reducir padding inferior */
+.grid .card {
+    padding: 32px 32px 12px 32px;
 }
 
 .project-card:hover {
@@ -403,7 +408,7 @@ button.filter-button:active::before {
 }
 
 .filter-button:active::before {
-    background: #2563eb;
+    background: #000000;
     transition: background 0s;
 }
 
@@ -433,6 +438,14 @@ button.filter-button:active::before {
     justify-content: center;
     margin-bottom: 24px;
     position: relative;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+.project-image-placeholder:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
 }
 
 .project-image-placeholder span {
@@ -458,7 +471,7 @@ button.filter-button:active::before {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 24px;
+    margin-bottom: 0;
 }
 
 .tech-tag {
@@ -556,7 +569,7 @@ button.filter-button:active::before {
 }
 
 .cta-section .btn:active::before {
-    background: #e5e7eb;
+    background: #000000;
 }
 
 @media (max-width: 768px) {

@@ -43,6 +43,7 @@ body {
     position: relative;
 }
 
+
 .logo-icon-container {
     width: 50px;
     height: 50px;
@@ -327,7 +328,7 @@ body.animation-played .logo-text-wrapper::before {
 }
 
 .email-form button:active::before {
-    background: #2563eb;
+    background: #000000;
     transition: background 0s;
 }
 
@@ -427,7 +428,7 @@ body.animation-played .logo-text-wrapper::before {
 }
 
 .btn:active::before {
-    background: #2563eb;
+    background: #000000;
     transition: background 0s;
 }
 
@@ -568,6 +569,7 @@ body.animation-played .logo-text-wrapper::before {
     
     .logo-text-wrapper {
         height: 30px;
+        margin-left: 50px;
     }
     
     body.animation-played .logo-icon-container {
@@ -682,23 +684,28 @@ body.animation-played .logo-text-wrapper::before {
     
     .logo-text-wrapper {
         height: 28px;
+        margin-left: 0;
+    }
+    
+    .logo-icon-container {
+        left: 75px;
     }
     
     body.animation-played .logo-icon-container {
-        transform: translateX(120px) rotate(-720deg);
+        transform: translateX(75px) rotate(-720deg);
         opacity: 1;
     }
     
     @keyframes rollLeft {
         0% {
-            transform: translateX(250px) rotate(0deg);
+            transform: translateX(-50px) rotate(0deg);
             opacity: 0;
         }
         20% {
             opacity: 1;
         }
         100% {
-            transform: translateX(120px) rotate(-720deg);
+            transform: translateX(75px) rotate(-720deg);
             opacity: 1;
         }
     }
