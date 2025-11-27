@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: hexalogic-backend
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+      - BREVO_API_KEY=${BREVO_API_KEY}
+      - BREVO_SMTP_KEY=${BREVO_SMTP_KEY}
+      - BREVO_SENDER_EMAIL=${BREVO_SENDER_EMAIL:-hexalogic20@gmail.com}
+      - BREVO_SENDER_NAME=${BREVO_SENDER_NAME:-HexaLogic}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:5173}
+    restart: unless-stopped
+    networks:
+      - hexalogic-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=${VITE_API_URL:-http://localhost:3000}
+    container_name: hexalogic-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - hexalogic-network
+
+networks:
+  hexalogic-network:
+    driver: bridge
+

@@ -540,8 +540,8 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', message: 'Backend is running' });
 });
 
-app.listen(PORT, () => {
-    console.log(`🚀 Backend corriendo en http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 Backend corriendo en http://0.0.0.0:${PORT}`);
     console.log(`✅ Configurado con Brevo (Sendinblue) para envío de correos`);
     console.log(`   Email remitente: ${BREVO_SENDER_EMAIL}`);
     console.log(`   Método: API de Brevo (con fallback a SMTP)\n`);
