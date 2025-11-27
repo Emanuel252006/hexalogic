@@ -21,7 +21,7 @@ const Portafolio = () => {
     {
       id: 2,
       title: 'Sabor',
-      description: 'Panel de control intuitivo para gestión de datos empresariales con gráficos interactivos y reportes en tiempo real.',
+      description: 'Sistema de gestión integral para restaurantes.',
       category: 'Proyecto Formativo',
       gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
       technologies: ['React', 'Node.js', 'MySQL'],
@@ -30,7 +30,7 @@ const Portafolio = () => {
     {
       id: 3,
       title: 'Scedesigns',
-      description: 'App móvil para seguimiento de ejercicios con rutinas personalizadas, estadísticas y comunidad.',
+      description: 'Ecomers de ropa.',
       category: 'Proyecto Formativo',
       gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
       technologies: ['React', 'Node.js', 'MySQL'],
