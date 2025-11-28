@@ -1,7 +1,8 @@
 // En desarrollo, Vite proxy redirige /api a http://localhost:3000
-// En producción, usa la variable de entorno o la URL completa
+// En producción, usa la variable de entorno o ruta relativa (mismo dominio)
+// Si VITE_API_URL no está definido, usa ruta relativa (funciona cuando frontend y backend están en la misma instancia)
 const API_BASE_URL = import.meta.env.PROD 
-  ? (import.meta.env.VITE_API_URL || 'http://localhost:3000')
+  ? (import.meta.env.VITE_API_URL || '')
   : '';
 
 export const sendContactEmail = async (formData) => {

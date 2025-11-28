@@ -48,8 +48,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
+// CORS: Si FRONTEND_URL no está configurado, permitir cualquier origen
+// Esto funciona cuando frontend y backend están en la misma instancia
+// En producción, Railway asignará el dominio automáticamente
+const corsOrigin = process.env.FRONTEND_URL || true; // true permite cualquier origen
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    origin: corsOrigin,
     credentials: true
 }));
 app.use(bodyParser.json());
