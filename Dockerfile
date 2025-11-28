@@ -88,10 +88,10 @@ RUN test -f /app/backend/server.js || (echo "ERROR: server.js no se copió corre
 # Copiar el build del frontend desde el stage de build
 COPY --from=frontend-builder /app/frontend/dist /usr/share/nginx/html
 
-# Crear archivo de configuración de nginx para el servidor
+# Crear template de configuración de nginx (el puerto se configurará en runtime)
 RUN printf '%s\n' \
     'server {' \
-    '    listen 80;' \
+    '    listen PORT_PLACEHOLDER;' \
     '    server_name _ www.hexalogic.com.co hexalogic.com.co;' \
     '    root /usr/share/nginx/html;' \
     '    index index.html;' \
@@ -113,13 +113,11 @@ RUN printf '%s\n' \
     '        proxy_set_header X-Forwarded-Proto $scheme;' \
     '    }' \
     '}' \
-    > /etc/nginx/conf.d/default.conf
+    > /etc/nginx/conf.d/default.conf.template
 
-# Verificar configuración de nginx
-RUN nginx -t
-
-# Exponer el puerto 80
-EXPOSE 80
+# Exponer el puerto (Railway asignará uno dinámicamente)
+# El puerto se configura en runtime usando la variable PORT
+EXPOSE 8080
 
 # Script para iniciar ambos servicios
 RUN cat > /start.sh << 'EOF'
@@ -128,6 +126,10 @@ set -e
 
 echo "🚀 Iniciando servicios HexaLogic..."
 
+# Obtener el puerto que Railway asigna (por defecto 8080 si no está definido)
+PORT=${PORT:-8080}
+echo "🔌 Puerto asignado por Railway: $PORT"
+
 # Verificar que los archivos estén presentes
 if [ ! -f /app/backend/server.js ]; then
     echo "❌ ERROR: server.js no encontrado en /app/backend"
@@ -135,9 +137,21 @@ if [ ! -f /app/backend/server.js ]; then
     exit 1
 fi
 
+# Generar configuración de nginx con el puerto correcto
+sed "s/PORT_PLACEHOLDER/$PORT/g" /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
+echo "📝 Configuración de nginx generada para puerto $PORT"
+
+# Verificar configuración de nginx
+echo "🔍 Verificando configuración de nginx..."
+nginx -t || {
+    echo "❌ ERROR: Configuración de nginx inválida"
+    cat /etc/nginx/conf.d/default.conf
+    exit 1
+}
+
 # Iniciar el backend en background
 cd /app/backend
-echo "📦 Iniciando backend en puerto 3000..."
+echo "📦 Iniciando backend en puerto 3000 (interno)..."
 node server.js &
 BACKEND_PID=$!
 echo "✅ Backend iniciado (PID: $BACKEND_PID)"
@@ -152,21 +166,14 @@ if ! kill -0 $BACKEND_PID 2>/dev/null; then
     exit 1
 fi
 
-# Verificar que nginx puede iniciar
-echo "🔍 Verificando configuración de nginx..."
-nginx -t || {
-    echo "❌ ERROR: Configuración de nginx inválida"
-    exit 1
-}
-
 # Iniciar nginx en foreground (para que el contenedor no termine)
-echo "🌐 Iniciando nginx..."
+echo "🌐 Iniciando nginx en puerto $PORT..."
 echo "✅ Todos los servicios están corriendo:"
-echo "   - Backend: http://localhost:3000 (PID: $BACKEND_PID)"
-echo "   - Nginx: escuchando en puerto 80"
+echo "   - Backend: http://localhost:3000 (interno, PID: $BACKEND_PID)"
+echo "   - Nginx: escuchando en puerto $PORT (público)"
 echo "   - Frontend: servido desde /usr/share/nginx/html"
 echo ""
-echo "🚀 Aplicación lista para recibir peticiones"
+echo "🚀 Aplicación lista para recibir peticiones en puerto $PORT"
 exec nginx -g "daemon off;"
 EOF
 
