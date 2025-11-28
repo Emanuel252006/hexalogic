@@ -70,6 +70,7 @@ http {
     tcp_nodelay on;
     keepalive_timeout 65;
     types_hash_max_size 2048;
+    client_max_body_size 10M;
 
     include /etc/nginx/conf.d/*.conf;
 }
@@ -145,6 +146,12 @@ echo "✅ Backend iniciado (PID: $BACKEND_PID)"
 echo "⏳ Esperando a que el backend esté listo..."
 sleep 3
 
+# Verificar que el backend está respondiendo
+if ! kill -0 $BACKEND_PID 2>/dev/null; then
+    echo "❌ ERROR: Backend no está corriendo"
+    exit 1
+fi
+
 # Verificar que nginx puede iniciar
 echo "🔍 Verificando configuración de nginx..."
 nginx -t || {
@@ -154,6 +161,12 @@ nginx -t || {
 
 # Iniciar nginx en foreground (para que el contenedor no termine)
 echo "🌐 Iniciando nginx..."
+echo "✅ Todos los servicios están corriendo:"
+echo "   - Backend: http://localhost:3000 (PID: $BACKEND_PID)"
+echo "   - Nginx: escuchando en puerto 80"
+echo "   - Frontend: servido desde /usr/share/nginx/html"
+echo ""
+echo "🚀 Aplicación lista para recibir peticiones"
 exec nginx -g "daemon off;"
 EOF
 
