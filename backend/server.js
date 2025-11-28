@@ -2,29 +2,29 @@
 const path = require('path');
 const fs = require('fs');
 
-// Cargar .env desde la carpeta backend
+// Determinar si estamos en producción (Railway, etc.) o desarrollo local
+const isProduction = process.env.NODE_ENV === 'production' || process.env.RAILWAY_ENVIRONMENT;
+
+// Cargar .env solo en desarrollo local (si existe)
 const envPath = path.join(__dirname, '.env');
-console.log('📁 Buscando archivo .env en:', envPath);
+if (!isProduction && fs.existsSync(envPath)) {
+    console.log('📁 Cargando archivo .env local...');
+    require('dotenv').config({ path: envPath });
+} else if (!isProduction) {
+    // Solo intentar cargar .env en desarrollo si no está en producción
+    require('dotenv').config({ path: envPath });
+}
 
-// Intentar cargar el .env
-require('dotenv').config({ path: envPath });
+// Verificar si las variables críticas están configuradas
+const hasRequiredVars = process.env.BREVO_API_KEY && process.env.BREVO_SENDER_EMAIL;
 
-// Verificar si el archivo existe
-if (fs.existsSync(envPath)) {
-    console.log('✅ Archivo .env encontrado');
-    // Leer el contenido para verificar
-    const envContent = fs.readFileSync(envPath, 'utf8');
-    console.log('📄 Contenido del .env (ocultando valores sensibles):');
-    envContent.split('\n').forEach((line, index) => {
-        if (line.trim() && !line.trim().startsWith('#')) {
-            const [key] = line.split('=');
-            if (key) {
-                console.log(`   ${key.trim()}: ${process.env[key.trim()] ? '✅ Configurado' : '❌ No configurado'}`);
-            }
-        }
-    });
-} else {
-    console.warn('⚠️  Archivo .env NO encontrado en:', envPath);
+if (isProduction) {
+    console.log('🌐 Modo producción: usando variables de entorno del sistema');
+} else if (fs.existsSync(envPath)) {
+    console.log('💻 Modo desarrollo: archivo .env encontrado');
+} else if (!hasRequiredVars) {
+    // Solo mostrar advertencia si estamos en desarrollo Y no hay variables configuradas
+    console.warn('⚠️  Archivo .env NO encontrado en desarrollo local');
     console.warn('   Por favor, crea el archivo .env en la carpeta backend con:');
     console.warn('   BREVO_API_KEY=tu_api_key');
     console.warn('   BREVO_SENDER_EMAIL=hexalogic20@gmail.com');
@@ -32,7 +32,7 @@ if (fs.existsSync(envPath)) {
 }
 
 // Debug: Verificar si las variables se cargaron
-console.log('\n🔍 Verificando variables de entorno cargadas:');
+console.log('\n🔍 Verificando variables de entorno:');
 console.log('   BREVO_API_KEY:', process.env.BREVO_API_KEY ? '✅ Configurada (longitud: ' + process.env.BREVO_API_KEY.length + ')' : '❌ No configurada');
 console.log('   BREVO_SENDER_EMAIL:', process.env.BREVO_SENDER_EMAIL || '❌ No configurada (usando default: hexalogic20@gmail.com)');
 console.log('   BREVO_SENDER_NAME:', process.env.BREVO_SENDER_NAME || '❌ No configurada (usando default: HexaLogic)');
