@@ -35,7 +35,10 @@ FROM node:18-alpine
 # Instalar nginx
 RUN apk add --no-cache nginx
 
-# Crear directorios necesarios
+# Crear directorios necesarios para nginx
+RUN mkdir -p /etc/nginx/conf.d /var/log/nginx /var/cache/nginx /run/nginx
+
+# Crear directorio de trabajo
 WORKDIR /app
 
 # Copiar backend desde el stage de instalación
@@ -45,6 +48,7 @@ COPY --from=backend-installer /app/backend ./backend
 COPY --from=frontend-builder /app/frontend/dist /usr/share/nginx/html
 
 # Configurar nginx
+# Crear archivo de configuración de nginx
 RUN echo 'server { \
     listen 80; \
     server_name _ www.hexalogic.com.co hexalogic.com.co; \
