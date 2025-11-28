@@ -77,24 +77,26 @@ RUN echo 'server { \
 EXPOSE 80
 
 # Script para iniciar ambos servicios
-RUN echo '#!/bin/sh \
-set -e \
-\
-echo "🚀 Iniciando servicios HexaLogic..." \
-\
-# Iniciar el backend en background \
-cd /app/backend \
-echo "📦 Iniciando backend en puerto 3000..." \
-node server.js & \
-\
-# Esperar un momento para que el backend inicie \
-echo "⏳ Esperando a que el backend esté listo..." \
-sleep 3 \
-\
-# Iniciar nginx en foreground (para que el contenedor no termine) \
-echo "🌐 Iniciando nginx..." \
-exec nginx -g "daemon off;" \
-' > /start.sh && chmod +x /start.sh
+RUN cat > /start.sh << 'EOF'
+#!/bin/sh
+set -e
+
+echo "🚀 Iniciando servicios HexaLogic..."
+
+# Iniciar el backend en background
+cd /app/backend
+echo "📦 Iniciando backend en puerto 3000..."
+node server.js &
+
+# Esperar un momento para que el backend inicie
+echo "⏳ Esperando a que el backend esté listo..."
+sleep 3
+
+# Iniciar nginx en foreground (para que el contenedor no termine)
+echo "🌐 Iniciando nginx..."
+exec nginx -g "daemon off;"
+EOF
+RUN chmod +x /start.sh
 
 # Comando para iniciar ambos servicios
 CMD ["/start.sh"]
