@@ -103,7 +103,7 @@ RUN printf '%s\n' \
     '' \
     '    # Proxy para el backend API' \
     '    location /api {' \
-    '        proxy_pass http://localhost:3000;' \
+    '        proxy_pass http://localhost:BACKEND_PORT_PLACEHOLDER;' \
     '        proxy_http_version 1.1;' \
     '        proxy_set_header Upgrade $http_upgrade;' \
     '        proxy_set_header Connection "upgrade";' \
@@ -137,9 +137,14 @@ if [ ! -f /app/backend/server.js ]; then
     exit 1
 fi
 
-# Generar configuración de nginx con el puerto correcto
-sed "s/PORT_PLACEHOLDER/$PORT/g" /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
-echo "📝 Configuración de nginx generada para puerto $PORT"
+# Configurar puerto interno del backend (diferente al puerto público)
+BACKEND_PORT=${BACKEND_PORT:-3001}
+
+# Generar configuración de nginx con los puertos correctos
+sed -e "s/PORT_PLACEHOLDER/$PORT/g" -e "s/BACKEND_PORT_PLACEHOLDER/$BACKEND_PORT/g" /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
+echo "📝 Configuración de nginx generada:"
+echo "   - Nginx escuchará en puerto $PORT (público)"
+echo "   - Backend en puerto $BACKEND_PORT (interno)"
 
 # Verificar configuración de nginx
 echo "🔍 Verificando configuración de nginx..."
@@ -149,12 +154,12 @@ nginx -t || {
     exit 1
 }
 
-# Iniciar el backend en background
+# Iniciar el backend en background con puerto interno (3001)
 cd /app/backend
-echo "📦 Iniciando backend en puerto 3000 (interno)..."
-node server.js &
+echo "📦 Iniciando backend en puerto $BACKEND_PORT (interno)..."
+PORT=$BACKEND_PORT node server.js &
 BACKEND_PID=$!
-echo "✅ Backend iniciado (PID: $BACKEND_PID)"
+echo "✅ Backend iniciado en puerto $BACKEND_PORT (PID: $BACKEND_PID)"
 
 # Esperar un momento para que el backend inicie
 echo "⏳ Esperando a que el backend esté listo..."
@@ -169,7 +174,7 @@ fi
 # Iniciar nginx en foreground (para que el contenedor no termine)
 echo "🌐 Iniciando nginx en puerto $PORT..."
 echo "✅ Todos los servicios están corriendo:"
-echo "   - Backend: http://localhost:3000 (interno, PID: $BACKEND_PID)"
+echo "   - Backend: http://localhost:$BACKEND_PORT (interno, PID: $BACKEND_PID)"
 echo "   - Nginx: escuchando en puerto $PORT (público)"
 echo "   - Frontend: servido desde /usr/share/nginx/html"
 echo ""
