@@ -103,7 +103,7 @@ RUN printf '%s\n' \
     '' \
     '    # Proxy para el backend API' \
     '    location /api {' \
-    '        proxy_pass http://localhost:BACKEND_PORT_PLACEHOLDER;' \
+    '        proxy_pass http://localhost:__BACKEND_PORT__;' \
     '        proxy_http_version 1.1;' \
     '        proxy_set_header Upgrade $http_upgrade;' \
     '        proxy_set_header Connection "upgrade";' \
@@ -141,7 +141,8 @@ fi
 BACKEND_PORT=${BACKEND_PORT:-3001}
 
 # Generar configuración de nginx con los puertos correctos
-sed -e "s/PORT_PLACEHOLDER/$PORT/g" -e "s/BACKEND_PORT_PLACEHOLDER/$BACKEND_PORT/g" /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
+# Reemplazar primero el puerto del backend para evitar conflictos
+sed -e "s/__BACKEND_PORT__/$BACKEND_PORT/g" -e "s/PORT_PLACEHOLDER/$PORT/g" /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
 echo "📝 Configuración de nginx generada:"
 echo "   - Nginx escuchará en puerto $PORT (público)"
 echo "   - Backend en puerto $BACKEND_PORT (interno)"
